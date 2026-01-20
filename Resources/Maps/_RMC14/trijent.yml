@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.2
   forkId: ""
   forkVersion: ""
-  time: 12/29/2025 19:33:23
-  entityCount: 35592
+  time: 01/15/2026 13:13:14
+  entityCount: 35624
 maps:
 - 1
 grids:
@@ -167810,6 +167810,166 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 32.5,-213.5
+      parent: 1
+  - uid: 35593
+    components:
+    - type: Transform
+      pos: 29.5,-8.5
+      parent: 1
+  - uid: 35594
+    components:
+    - type: Transform
+      pos: 26.5,-4.5
+      parent: 1
+  - uid: 35595
+    components:
+    - type: Transform
+      pos: 19.5,-4.5
+      parent: 1
+  - uid: 35596
+    components:
+    - type: Transform
+      pos: 19.5,-11.5
+      parent: 1
+  - uid: 35597
+    components:
+    - type: Transform
+      pos: 19.5,-19.5
+      parent: 1
+  - uid: 35598
+    components:
+    - type: Transform
+      pos: 19.5,-27.5
+      parent: 1
+  - uid: 35599
+    components:
+    - type: Transform
+      pos: 19.5,-35.5
+      parent: 1
+  - uid: 35600
+    components:
+    - type: Transform
+      pos: 19.5,-43.5
+      parent: 1
+  - uid: 35601
+    components:
+    - type: Transform
+      pos: 33.5,-44.5
+      parent: 1
+  - uid: 35602
+    components:
+    - type: Transform
+      pos: 47.5,-44.5
+      parent: 1
+  - uid: 35603
+    components:
+    - type: Transform
+      pos: 49.5,-30.5
+      parent: 1
+  - uid: 35604
+    components:
+    - type: Transform
+      pos: 50.5,-35.5
+      parent: 1
+  - uid: 35605
+    components:
+    - type: Transform
+      pos: 46.5,-21.5
+      parent: 1
+  - uid: 35606
+    components:
+    - type: Transform
+      pos: 46.5,-13.5
+      parent: 1
+  - uid: 35607
+    components:
+    - type: Transform
+      pos: 46.5,-8.5
+      parent: 1
+  - uid: 35608
+    components:
+    - type: Transform
+      pos: 40.5,-6.5
+      parent: 1
+  - uid: 35609
+    components:
+    - type: Transform
+      pos: 49.5,-5.5
+      parent: 1
+  - uid: 35610
+    components:
+    - type: Transform
+      pos: 25.5,-45.5
+      parent: 1
+  - uid: 35611
+    components:
+    - type: Transform
+      pos: 41.5,-45.5
+      parent: 1
+  - uid: 35612
+    components:
+    - type: Transform
+      pos: 35.5,-191.5
+      parent: 1
+  - uid: 35613
+    components:
+    - type: Transform
+      pos: 16.5,-191.5
+      parent: 1
+  - uid: 35614
+    components:
+    - type: Transform
+      pos: 15.5,-205.5
+      parent: 1
+  - uid: 35615
+    components:
+    - type: Transform
+      pos: 15.5,-207.5
+      parent: 1
+  - uid: 35616
+    components:
+    - type: Transform
+      pos: 27.5,-207.5
+      parent: 1
+  - uid: 35617
+    components:
+    - type: Transform
+      pos: 27.5,-205.5
+      parent: 1
+  - uid: 35618
+    components:
+    - type: Transform
+      pos: 16.5,-217.5
+      parent: 1
+  - uid: 35619
+    components:
+    - type: Transform
+      pos: 26.5,-217.5
+      parent: 1
+  - uid: 35620
+    components:
+    - type: Transform
+      pos: 16.5,-195.5
+      parent: 1
+  - uid: 35621
+    components:
+    - type: Transform
+      pos: 26.5,-195.5
+      parent: 1
+  - uid: 35622
+    components:
+    - type: Transform
+      pos: 21.5,-222.5
+      parent: 1
+  - uid: 35623
+    components:
+    - type: Transform
+      pos: 11.5,-222.5
+      parent: 1
+  - uid: 35624
+    components:
+    - type: Transform
+      pos: 29.5,-222.5
       parent: 1
 - proto: RMCVendorCigsElectro
   entities:

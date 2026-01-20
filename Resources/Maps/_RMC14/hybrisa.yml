@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.2
   forkId: ""
   forkVersion: ""
-  time: 12/11/2025 21:06:19
-  entityCount: 49417
+  time: 01/14/2026 21:17:38
+  entityCount: 49419
 maps:
 - 1
 grids:
@@ -137449,7 +137449,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -16062.2
+      secondsUntilStateChange: -16317.263
       state: Opening
   - uid: 12471
     components:
@@ -192003,6 +192003,20 @@ entities:
     components:
     - type: Transform
       pos: -197.5,-79.5
+      parent: 1
+- proto: RMCMapInsertHybrisaCLFSpaceport
+  entities:
+  - uid: 20627
+    components:
+    - type: Transform
+      pos: -194.5,-22.5
+      parent: 1
+- proto: RMCMapInsertHybrisaTSEAirbase
+  entities:
+  - uid: 20791
+    components:
+    - type: Transform
+      pos: -166.5,-58.5
       parent: 1
 - proto: RMCMarkerAreaLabel
   entities:

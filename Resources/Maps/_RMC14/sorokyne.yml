@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.2
   forkId: ""
   forkVersion: ""
-  time: 12/03/2025 17:18:26
-  entityCount: 34492
+  time: 01/04/2026 10:16:34
+  entityCount: 34499
 maps:
 - 1
 grids:
@@ -75341,7 +75341,7 @@ entities:
     - type: CMDoubleDoor
       lastOpeningAt: 7656.8256765
     - type: Door
-      secondsUntilStateChange: -10428.229
+      secondsUntilStateChange: -10549.04
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -75355,7 +75355,7 @@ entities:
     - type: CMDoubleDoor
       lastOpeningAt: 7656.8256765
     - type: Door
-      secondsUntilStateChange: -10428.229
+      secondsUntilStateChange: -10549.04
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -127654,7 +127654,8 @@ entities:
   - uid: 12532
     components:
     - type: Transform
-      pos: 18.5,121.5
+      rot: -1.5707963267948966 rad
+      pos: 47.5,3.5
       parent: 1
   - uid: 12533
     components:
@@ -127762,6 +127763,43 @@ entities:
     components:
     - type: Transform
       pos: 12.5,86.5
+      parent: 1
+  - uid: 34493
+    components:
+    - type: Transform
+      pos: 4.5,107.5
+      parent: 1
+  - uid: 34494
+    components:
+    - type: Transform
+      pos: 3.5,101.5
+      parent: 1
+  - uid: 34495
+    components:
+    - type: Transform
+      pos: 3.5,113.5
+      parent: 1
+  - uid: 34496
+    components:
+    - type: Transform
+      pos: 5.5,94.5
+      parent: 1
+  - uid: 34497
+    components:
+    - type: Transform
+      pos: 17.5,121.5
+      parent: 1
+  - uid: 34498
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 58.5,4.5
+      parent: 1
+  - uid: 34499
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 40.5,32.5
       parent: 1
 - proto: RMCVendorCigsElectro
   entities:
