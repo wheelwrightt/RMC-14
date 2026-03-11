@@ -97245,7 +97245,7 @@ entities:
       parent: 1
 - proto: RMCMapInsertFiorinaRiotInProgress
   entities:
-  - uid: 21717
+  - uid: 21845
     components:
     - type: Transform
       pos: 9.5,-40.5
