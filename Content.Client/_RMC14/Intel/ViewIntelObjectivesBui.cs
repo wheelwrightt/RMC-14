@@ -21,65 +21,65 @@ public sealed class ViewIntelObjectivesBui(EntityUid owner, Enum uiKey) : BoundU
         Refresh();
     }
 
-public void Refresh()
-{
-    if (_window is not { IsOpen: true })
-        return;
-
-    if (!EntMan.TryGetComponent(Owner, out ViewIntelObjectivesComponent? comp))
-        return;
-
-    var savedSearch = _window.CluesSearchBar?.Text ?? string.Empty;
-    var savedTab = _window.CluesContainer is TabContainer tabContainer ? tabContainer.CurrentTab : 0;
-
-    var tree = comp.Tree;
-    _window.CurrentPointsLabel.Text = Loc.GetString("rmc-ui-intel-points-value", ("value", tree.Points.Double().ToString("F1")));
-    _window.CurrentTierLabel.Text = Loc.GetString("rmc-ui-intel-tier-value", ("value", tree.Tier));
-    _window.TotalPointsLabel.Text = Loc.GetString("rmc-ui-intel-total-credits", ("value", tree.TotalEarned.Double().ToString("F1")));
-    _window.DocumentsLabel.Text = Loc.GetString("rmc-ui-intel-progress", ("current", tree.Documents.Current), ("total", tree.Documents.Total));
-    _window.UploadDataLabel.Text = Loc.GetString("rmc-ui-intel-progress", ("current", tree.UploadData.Current), ("total", tree.UploadData.Total));
-    _window.RetrieveItemsLabel.Text = Loc.GetString("rmc-ui-intel-progress", ("current", tree.RetrieveItems.Current), ("total", tree.RetrieveItems.Total));
-    _window.MiscellaneousLabel.Text = Loc.GetString("rmc-ui-intel-progress", ("current", tree.Miscellaneous.Current), ("total", tree.Miscellaneous.Total));
-    // _window.AnalyzeChemicalsLabel.Text = Loc.GetString("rmc-ui-intel-infinite-progress", ("current", tree.AnalyzeChemicals));
-    _window.RescueSurvivorsLabel.Text = Loc.GetString("rmc-ui-intel-infinite-progress", ("current", tree.RescueSurvivors));
-    _window.RecoverCorpsesLabel.Text = Loc.GetString("rmc-ui-intel-infinite-progress", ("current", tree.RecoverCorpses));
-    _window.ColonyCommunicationsLabel.Text = Loc.GetString("rmc-ui-intel-colony-status", ("online", tree.ColonyCommunications));
-    _window.ColonyPowerLabel.Text = Loc.GetString("rmc-ui-intel-colony-status", ("online", tree.ColonyPower));
-
-    _allClueRows.Clear();
-    if (_window.CluesSearchBar != null)
-        _window.CluesSearchBar.Text = string.Empty;
-
-    _window.CluesContainer.DisposeAllChildren();
-    if (comp.PersonalClues.Count > 0)
-        AddClueTab("rmc-intel-personal", comp.PersonalClues.Values);
-
-    foreach (var (category, clues) in comp.Tree.Clues)
-        AddClueTab(category, clues.Values);
-
-    if (_window.CluesSearchBar != null)
+    public void Refresh()
     {
-        _window.CluesSearchBar.OnTextChanged -= OnSearchChanged;
-        _window.CluesSearchBar.OnTextChanged += OnSearchChanged;
-        if (!string.IsNullOrEmpty(savedSearch))
+        if (_window is not { IsOpen: true })
+            return;
+
+        if (!EntMan.TryGetComponent(Owner, out ViewIntelObjectivesComponent? comp))
+            return;
+
+        var savedSearch = _window.CluesSearchBar?.Text ?? string.Empty;
+        var savedTab = _window.CluesContainer is TabContainer tabContainer ? tabContainer.CurrentTab : 0;
+
+        var tree = comp.Tree;
+        _window.CurrentPointsLabel.Text = Loc.GetString("rmc-ui-intel-points-value", ("value", tree.Points.Double().ToString("F1")));
+        _window.CurrentTierLabel.Text = Loc.GetString("rmc-ui-intel-tier-value", ("value", tree.Tier));
+        _window.TotalPointsLabel.Text = Loc.GetString("rmc-ui-intel-total-credits", ("value", tree.TotalEarned.Double().ToString("F1")));
+        _window.DocumentsLabel.Text = Loc.GetString("rmc-ui-intel-progress", ("current", tree.Documents.Current), ("total", tree.Documents.Total));
+        _window.UploadDataLabel.Text = Loc.GetString("rmc-ui-intel-progress", ("current", tree.UploadData.Current), ("total", tree.UploadData.Total));
+        _window.RetrieveItemsLabel.Text = Loc.GetString("rmc-ui-intel-progress", ("current", tree.RetrieveItems.Current), ("total", tree.RetrieveItems.Total));
+        _window.MiscellaneousLabel.Text = Loc.GetString("rmc-ui-intel-progress", ("current", tree.Miscellaneous.Current), ("total", tree.Miscellaneous.Total));
+        // _window.AnalyzeChemicalsLabel.Text = Loc.GetString("rmc-ui-intel-infinite-progress", ("current", tree.AnalyzeChemicals));
+        _window.RescueSurvivorsLabel.Text = Loc.GetString("rmc-ui-intel-infinite-progress", ("current", tree.RescueSurvivors));
+        _window.RecoverCorpsesLabel.Text = Loc.GetString("rmc-ui-intel-infinite-progress", ("current", tree.RecoverCorpses));
+        _window.ColonyCommunicationsLabel.Text = Loc.GetString("rmc-ui-intel-colony-status", ("online", tree.ColonyCommunications));
+        _window.ColonyPowerLabel.Text = Loc.GetString("rmc-ui-intel-colony-status", ("online", tree.ColonyPower));
+
+        _allClueRows.Clear();
+        if (_window.CluesSearchBar != null)
+            _window.CluesSearchBar.Text = string.Empty;
+
+        _window.CluesContainer.DisposeAllChildren();
+        if (comp.PersonalClues.Count > 0)
+            AddClueTab("rmc-intel-personal", comp.PersonalClues.Values);
+
+        foreach (var (category, clues) in comp.Tree.Clues)
+            AddClueTab(category, clues.Values);
+
+        if (_window.CluesSearchBar != null)
         {
-            _window.CluesSearchBar.Text = savedSearch;
-            ApplyFilter(savedSearch);
+            _window.CluesSearchBar.OnTextChanged -= OnSearchChanged;
+            _window.CluesSearchBar.OnTextChanged += OnSearchChanged;
+            if (!string.IsNullOrEmpty(savedSearch))
+            {
+                _window.CluesSearchBar.Text = savedSearch;
+                ApplyFilter(savedSearch);
+            }
         }
+
+        if (_window.CluesContainer is TabContainer tabs && savedTab >= 0 && savedTab < tabs.ChildCount)
+            tabs.CurrentTab = savedTab;
+
+        if (_window.HideAreasButton != null)
+        {
+            _window.HideAreasButton.OnPressed -= OnHideAreasPressed;
+            _window.HideAreasButton.OnPressed += OnHideAreasPressed;
+            UpdateHideAreasButton();
+        }
+
+        ApplyAreaVisibility();
     }
-
-    if (_window.CluesContainer is TabContainer tabs && savedTab >= 0 && savedTab < tabs.ChildCount)
-        tabs.CurrentTab = savedTab;
-
-    if (_window.HideAreasButton != null)
-    {
-        _window.HideAreasButton.OnPressed -= OnHideAreasPressed;
-        _window.HideAreasButton.OnPressed += OnHideAreasPressed;
-        UpdateHideAreasButton();
-    }
-
-    ApplyAreaVisibility();
-}
 
     private void OnSearchChanged(LineEdit.LineEditEventArgs args)
     {
