@@ -29,6 +29,9 @@ public sealed class ViewIntelObjectivesBui(EntityUid owner, Enum uiKey) : BoundU
         if (!EntMan.TryGetComponent(Owner, out ViewIntelObjectivesComponent? comp))
             return;
 
+        var savedSearch = _window.CluesSearchBar?.Text ?? string.Empty;
+        var savedTab = _window.CluesContainer is TabContainer tabContainer ? tabContainer.CurrentTab : 0;
+
         var tree = comp.Tree;
         _window.CurrentPointsLabel.Text = Loc.GetString("rmc-ui-intel-points-value", ("value", tree.Points.Double().ToString("F1")));
         _window.CurrentTierLabel.Text = Loc.GetString("rmc-ui-intel-tier-value", ("value", tree.Tier));
@@ -58,7 +61,15 @@ public sealed class ViewIntelObjectivesBui(EntityUid owner, Enum uiKey) : BoundU
         {
             _window.CluesSearchBar.OnTextChanged -= OnSearchChanged;
             _window.CluesSearchBar.OnTextChanged += OnSearchChanged;
+            if (!string.IsNullOrEmpty(savedSearch))
+            {
+                _window.CluesSearchBar.Text = savedSearch;
+                ApplyFilter(savedSearch);
+            }
         }
+
+        if (_window.CluesContainer is TabContainer tabs && savedTab >= 0 && savedTab < tabs.ChildCount)
+            tabs.CurrentTab = savedTab;
 
         if (_window.HideAreasButton != null)
         {
